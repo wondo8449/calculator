@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -16,7 +17,10 @@ public class Main {
         String close = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
+        // 연산 결과를 담아줄 배열 생성
+        int[] results = new int[10];
 
+        // 무한 계산을 하기 위한 while문 실행
         while(check) {
             // 첫번째 숫자를 입력받기 위한 문장 출력
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -96,9 +100,28 @@ public class Main {
                 default:
                     System.out.println("사칙연산 기호를 잘못 입력하였습니다.");
             }
+            // 계산 결과를 배열에 담기 위한 반복문
+            for( int i=0; i < results.length; i++){
+                // 만약 i번째 배열의 값이 초기값인 0이라면
+                if(results[i] == 0) {
+                    // 해당 인덱스 번호에 결과값을 저장
+                    results[i] = result;
+                    // 저장하였다면 뒤의 인덱스에까지 저장되지 않도록 for문을 나가기
+                    break;
+                }
+            }
+
+            // 현재까지의 저장 결과를 보여주기 위한 출력
+            // 배열은 results로 바로 출력하면 주소값이 뜨기 때문에 해당 주소의 값을 가져와주는 toString메소드 사용
+            System.out.println("현재까지의 결과 : " + Arrays.toString(results));
+
+            // 더 계산할지에 대한 여부를 묻기 위한 출력
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            // 사용자가 입력한 값을 만들어둔 String 변수에 담아준다
             close = sc.next();
+            // String 클래스의 비교방법인 .equals 메소드를 사용해 exit가 입력되었는지 확인
             if (close.equals("exit")) {
+                // exit가 입력되었다면 check 값을 false로 변경해 더 이상 while문을 돌지 않도록 설정
                 check = false;
             }
         }
