@@ -57,11 +57,4 @@ public class Calculator {
         // 연산 결과가 담긴 results를 리턴해준다
         return results;
     }
-
-    // 생성한 메소드가 잘 동작하는지 확인하기 위한 메인 메소드(메인 클래스와 연동 시 테스트 필요없음으로 삭제 예정)
-    public static void main(String[] args) {
-        Calculator calculator = new Calculator();
-
-        calculator.calculator(10, 1, '+');
-    }
 }

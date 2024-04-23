@@ -11,19 +11,13 @@ public class Main {
         int firstNumber, secondNumber = 0;
         // 입력받을 사칙연산 기호를 담을 변수 생성 및 초기화
         char symbol = ' ';
-
-        // 종료 입력을 받기 위한 변수 생성 및 초기화
-        String close = null;
-        // 삭제 여부 입력을 받기 위한 변수 생성 및 초기화
-        String remove = null;
-        // 조회 여부 입력을 받기 위한 변수 생성 및 초기화
-        String inquiry = null;
+        // 종료, 삭제, 조회 입력을 받기 위한 변수 생성 및 초기화
+        String close = null, remove = null, inquiry = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
-        // 연산 결과를 담아줄 배열 생성
-        //int[] results = new int[10];
-        // 연산 결과를 담아줄 List 객체 생성
-        List<Integer> results = new ArrayList<>();
+        // Calculator를 사용하기 위해 객체 생성
+        Calculator cal = new Calculator();
+
 
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
@@ -68,6 +62,8 @@ public class Main {
             // 기호를 정상적으로 입력받는지 테스트하기 위한 출력 메소드
             System.out.println("입력받은 문자 : " + symbol);
 
+            cal.calculator(firstNumber, secondNumber, symbol);
+
             // 삭제 여부를 확인하기 위한 문장 출력
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             // 삭제 여부를 만들어둔 String 객체에 담아준다
@@ -75,7 +71,7 @@ public class Main {
             // 만약 사용자가 입력한 값이 "remove"와 같다면
             if (remove.equals("remove")) {
                 // 가장 먼저 저장된 값인 0번 인덱스 값을 삭제해준다
-                results.remove(0);
+                //results.remove(0);
             }
 
             // 현재까지의 저장 결과를 보여주기 위한 출력
@@ -89,7 +85,7 @@ public class Main {
             // 만약 사용자가 입력한 값이 "inquiry"와 같다면
             if (inquiry.equals("inquiry")) {
                 // 현재까지 저장된 연산결과를 조회해준다
-                results.forEach(data -> System.out.println(data));
+                //results.forEach(data -> System.out.println(data));
             }
 
             // 더 계산할지에 대한 여부를 묻기 위한 출력
