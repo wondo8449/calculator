@@ -62,7 +62,7 @@ public class Main {
             System.out.println("입력받은 문자 : " + symbol);
 
             // 생성된 Calculator 객체에 calculator 메소드에 접근하여 입력받은 값들을 매개변수로 전달하여 실헹
-            cal.calculator(firstNumber, secondNumber, symbol);
+            cal.calculate(firstNumber, secondNumber, symbol);
 
             // 삭제 여부를 확인하기 위한 문장 출력
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
@@ -70,8 +70,8 @@ public class Main {
             remove = sc.next();
             // 만약 사용자가 입력한 값이 "remove"와 같다면
             if (remove.equals("remove")) {
-                // 가장 먼저 저장된 값인 0번 인덱스 값을 삭제해준다
-                //results.remove(0);
+                // Calculator의 removeResult 메소드를 실행하여 0번 인덱스 값 삭제
+                cal.removeResult();
             }
 
             // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력

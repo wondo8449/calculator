@@ -19,7 +19,7 @@ public class Calculator {
     // 메인 메소드에서 접근할 수 있도록 접근 제어자는 public으로 설정해주고 return 타입은 계산 결과를
     // List 객체에 담아 리턴해줄 것이기 때문에 List로 설정해준다. 매개변수로는 두 개의 양의 정수,
     // 사칙연산 기호를 각각 받아오도록 설정하여 계산을 담당할 메소드를 만들어준다
-    public List<Integer> calculator(int firstNumber, int secondNumber, char symbol){
+    public List<Integer> calculate(int firstNumber, int secondNumber, char symbol){
         // 결과값과 나머지를 담기 위한 변수 생성
         int result = 0, rest = 0;
 
@@ -70,5 +70,11 @@ public class Calculator {
         }
         // 연산 결과가 담긴 results를 리턴해준다
         return getResults();
+    }
+
+    // 사용자가 삭제를 요청할 시 0번 인덱스를 삭제할 메소드 생성
+    public void removeResult() {
+        // List 객체의 remove 메소드를 사용하여 0번 인덱스의 값 삭제
+        results.remove(0);
     }
 }
