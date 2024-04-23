@@ -19,6 +19,15 @@ public class Main {
         boolean check = true;
         // 연산 결과를 담아줄 배열 생성
         int[] results = new int[10];
+        results[0] = 1;
+        results[1] = 2;
+        results[2] = 3;
+        results[3] = 4;
+        results[4] = 5;
+        results[5] = 6;
+        results[6] = 7;
+        results[7] = 8;
+        results[8] = 9;
 
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
@@ -102,6 +111,17 @@ public class Main {
             }
             // 계산 결과를 배열에 담기 위한 반복문
             for( int i=0; i < results.length; i++){
+                // 만약 배열의 마지막 인덱스까지 값이 있다면
+                if(results[9] != 0){
+                    // for문을 돌며 1번 인덱스부터 j-1을 한 자기 바로 앞번호 인덱스로 들어가게 된다
+                    for(int j=1; j <= 9; j++) {
+                        results[j-1] = results[j];
+                    }
+                    // 모든 인덱스의 값이 한칸씩 앞으로 간 후 마지막 인덱스의 새로운 결과값을 넣어준다
+                    results[9] = result;
+                    // 다시 반복되지 않도록 break를 걸어준다
+                    break;
+                }
                 // 만약 i번째 배열의 값이 초기값인 0이라면
                 if(results[i] == 0) {
                     // 해당 인덱스 번호에 결과값을 저장
