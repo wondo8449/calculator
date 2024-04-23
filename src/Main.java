@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -15,19 +17,14 @@ public class Main {
         int rest = 0;
         // 종료 입력을 받기 위한 변수 생성 및 초기화
         String close = null;
+        // 삭제 여부 입력을 받기 위한 변수 생성 및 초기화
+        String remove = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
         // 연산 결과를 담아줄 배열 생성
-        int[] results = new int[10];
-        results[0] = 1;
-        results[1] = 2;
-        results[2] = 3;
-        results[3] = 4;
-        results[4] = 5;
-        results[5] = 6;
-        results[6] = 7;
-        results[7] = 8;
-        results[8] = 9;
+        //int[] results = new int[10];
+        // 연산 결과를 담아줄 List 객체 생성
+        List<Integer> results = new ArrayList<>();
 
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
@@ -109,31 +106,44 @@ public class Main {
                 default:
                     System.out.println("사칙연산 기호를 잘못 입력하였습니다.");
             }
-            // 계산 결과를 배열에 담기 위한 반복문
-            for( int i=0; i < results.length; i++){
-                // 만약 배열의 마지막 인덱스까지 값이 있다면
-                if(results[9] != 0){
-                    // for문을 돌며 1번 인덱스부터 j-1을 한 자기 바로 앞번호 인덱스로 들어가게 된다
-                    for(int j=1; j <= 9; j++) {
-                        results[j-1] = results[j];
-                    }
-                    // 모든 인덱스의 값이 한칸씩 앞으로 간 후 마지막 인덱스의 새로운 결과값을 넣어준다
-                    results[9] = result;
-                    // 다시 반복되지 않도록 break를 걸어준다
-                    break;
-                }
-                // 만약 i번째 배열의 값이 초기값인 0이라면
-                if(results[i] == 0) {
-                    // 해당 인덱스 번호에 결과값을 저장
-                    results[i] = result;
-                    // 저장하였다면 뒤의 인덱스에까지 저장되지 않도록 for문을 나가기
-                    break;
-                }
+//            // 계산 결과를 배열에 담기 위한 반복문
+//            for( int i=0; i < results.length; i++){
+//                // 만약 배열의 마지막 인덱스까지 값이 있다면
+//                if(results[9] != 0){
+//                    // for문을 돌며 1번 인덱스부터 j-1을 한 자기 바로 앞번호 인덱스로 들어가게 된다
+//                    for(int j=1; j <= 9; j++) {
+//                        results[j-1] = results[j];
+//                    }
+//                    // 모든 인덱스의 값이 한칸씩 앞으로 간 후 마지막 인덱스의 새로운 결과값을 넣어준다
+//                    results[9] = result;
+//                    // 다시 반복되지 않도록 break를 걸어준다
+//                    break;
+//                }
+//                // 만약 i번째 배열의 값이 초기값인 0이라면
+//                if(results[i] == 0) {
+//                    // 해당 인덱스 번호에 결과값을 저장
+//                    results[i] = result;
+//                    // 저장하였다면 뒤의 인덱스에까지 저장되지 않도록 for문을 나가기
+//                    break;
+//                }
+//            }
+
+            // 사칙연산 결과를 List 객체에 담아준다
+            results.add(result);
+
+            // 삭제 여부를 확인하기 위한 문장 출력
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            // 삭제 여부를 만들어둔 String 객체에 담아준다
+            remove = sc.next();
+            // 만약 사용자가 입력한 값이 "remove"와 같다면
+            if (remove.equals("remove")) {
+                // 가장 먼저 저장된 값인 0번 인덱스 값을 삭제해준다
+                results.remove(0);
             }
 
             // 현재까지의 저장 결과를 보여주기 위한 출력
             // 배열은 results로 바로 출력하면 주소값이 뜨기 때문에 해당 주소의 값을 가져와주는 toString메소드 사용
-            System.out.println("현재까지의 결과 : " + Arrays.toString(results));
+            System.out.println("현재까지의 결과 : " + results.toString());
 
             // 더 계산할지에 대한 여부를 묻기 위한 출력
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
