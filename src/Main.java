@@ -18,7 +18,6 @@ public class Main {
         // Calculator를 사용하기 위해 객체 생성
         Calculator cal = new Calculator();
 
-
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
             // 첫번째 숫자를 입력받기 위한 문장 출력
@@ -62,6 +61,7 @@ public class Main {
             // 기호를 정상적으로 입력받는지 테스트하기 위한 출력 메소드
             System.out.println("입력받은 문자 : " + symbol);
 
+            // 생성된 Calculator 객체에 calculator 메소드에 접근하여 입력받은 값들을 매개변수로 전달하여 실헹
             cal.calculator(firstNumber, secondNumber, symbol);
 
             // 삭제 여부를 확인하기 위한 문장 출력
@@ -74,10 +74,6 @@ public class Main {
                 //results.remove(0);
             }
 
-            // 현재까지의 저장 결과를 보여주기 위한 출력
-            // 배열은 results로 바로 출력하면 주소값이 뜨기 때문에 해당 주소의 값을 가져와주는 toString메소드 사용
-            // System.out.println("현재까지의 결과 : " + results.toString());
-
             // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             // 조회 여부를 만들어둔 String 객체에 담아준다
@@ -85,7 +81,7 @@ public class Main {
             // 만약 사용자가 입력한 값이 "inquiry"와 같다면
             if (inquiry.equals("inquiry")) {
                 // 현재까지 저장된 연산결과를 조회해준다
-                //results.forEach(data -> System.out.println(data));
+                //System.out.println(cal.getResults());
             }
 
             // 더 계산할지에 대한 여부를 묻기 위한 출력
@@ -97,6 +93,8 @@ public class Main {
                 // exit가 입력되었다면 check 값을 false로 변경해 더 이상 while문을 돌지 않도록 설정
                 check = false;
             }
+            // getter 메소드 작동 확인
+            System.out.println(cal.getResults());
         }
     }
 }
