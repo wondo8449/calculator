@@ -80,8 +80,8 @@ public class Main {
             inquiry = sc.next();
             // 만약 사용자가 입력한 값이 "inquiry"와 같다면
             if (inquiry.equals("inquiry")) {
-                // 현재까지 저장된 연산결과를 조회해준다
-                //System.out.println(cal.getResults());
+                // 현재까지 저장된 연산결과를 조회해준다 getter를 생성해놨기 때문에 따로 메소드를 생성하지 않고 getter를 활용해준다
+                System.out.println(cal.getResults());
             }
 
             // 더 계산할지에 대한 여부를 묻기 위한 출력
@@ -93,8 +93,6 @@ public class Main {
                 // exit가 입력되었다면 check 값을 false로 변경해 더 이상 while문을 돌지 않도록 설정
                 check = false;
             }
-            // getter 메소드 작동 확인
-            System.out.println(cal.getResults());
         }
     }
 }
