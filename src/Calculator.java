@@ -4,7 +4,12 @@ import java.util.List;
 public class Calculator {
 
     // 결과 값을 담아 리턴할 List 객체를 외부에서 접근할 수 없도록 private 생성
-    private List<Integer> results = new ArrayList<>();
+    private List<Integer> results;
+
+    // 생성자를 통하여 results가 초기화되어 생성되도록 설정
+    public Calculator() {
+        results = new ArrayList<>();
+    }
 
     // results의 값을 가져올 수 있는 getter 생성
     public List<Integer> getResults() {
