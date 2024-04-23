@@ -11,10 +11,7 @@ public class Main {
         int firstNumber, secondNumber = 0;
         // 입력받을 사칙연산 기호를 담을 변수 생성 및 초기화
         char symbol = ' ';
-        // 결과값을 담을 변수 생성 및 초기화
-        int result = 0;
-        // 나누기를 실행할 시 나머지를 담을 변수 생성 및 초기화
-        int rest = 0;
+
         // 종료 입력을 받기 위한 변수 생성 및 초기화
         String close = null;
         // 삭제 여부 입력을 받기 위한 변수 생성 및 초기화
@@ -70,68 +67,6 @@ public class Main {
 
             // 기호를 정상적으로 입력받는지 테스트하기 위한 출력 메소드
             System.out.println("입력받은 문자 : " + symbol);
-
-            // 입력된 기호 별로 case를 나눠 연산 실행
-            switch (symbol) {
-                // + 일 때의 연산 실행
-                case '+':
-                    result = firstNumber + secondNumber;
-                    System.out.println("result : " + result);
-                    // 더 이상 switch문을 돌지 않도록 break를 설정
-                    break;
-                // - 일 때의 연산 실행
-                case '-':
-                    result = firstNumber - secondNumber;
-                    System.out.println("result : " + result);
-                    break;
-                // * 일 때의 연산 실행
-                case '*':
-                    result = firstNumber * secondNumber;
-                    System.out.println("result : " + result);
-                    break;
-                // / 일 때의 연산 실행
-                case '/':
-                    // 만약 입력받은 두 번째 정수가 0이라면 입력될 수 없다는 문구 출력
-                    if (secondNumber == 0) {
-                        System.out.println("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
-                        // 0이 아니라면 아래의 연산 실행
-                    } else {
-                        // 나눗셈의 몫을 담아주는 부분
-                        result = firstNumber / secondNumber;
-                        // 나눗셈의 나머지를 담아주는 부분
-                        rest = firstNumber % secondNumber;
-                        System.out.println("몫 : " + result);
-                        System.out.println("나머지 : " + rest);
-                    }
-                    break;
-                // 사칙연산 기호가 잘못 입력된 경우 출력
-                default:
-                    System.out.println("사칙연산 기호를 잘못 입력하였습니다.");
-            }
-//            // 계산 결과를 배열에 담기 위한 반복문
-//            for( int i=0; i < results.length; i++){
-//                // 만약 배열의 마지막 인덱스까지 값이 있다면
-//                if(results[9] != 0){
-//                    // for문을 돌며 1번 인덱스부터 j-1을 한 자기 바로 앞번호 인덱스로 들어가게 된다
-//                    for(int j=1; j <= 9; j++) {
-//                        results[j-1] = results[j];
-//                    }
-//                    // 모든 인덱스의 값이 한칸씩 앞으로 간 후 마지막 인덱스의 새로운 결과값을 넣어준다
-//                    results[9] = result;
-//                    // 다시 반복되지 않도록 break를 걸어준다
-//                    break;
-//                }
-//                // 만약 i번째 배열의 값이 초기값인 0이라면
-//                if(results[i] == 0) {
-//                    // 해당 인덱스 번호에 결과값을 저장
-//                    results[i] = result;
-//                    // 저장하였다면 뒤의 인덱스에까지 저장되지 않도록 for문을 나가기
-//                    break;
-//                }
-//            }
-
-            // 사칙연산 결과를 List 객체에 담아준다
-            results.add(result);
 
             // 삭제 여부를 확인하기 위한 문장 출력
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
