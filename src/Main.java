@@ -19,6 +19,8 @@ public class Main {
         String close = null;
         // 삭제 여부 입력을 받기 위한 변수 생성 및 초기화
         String remove = null;
+        // 조회 여부 입력을 받기 위한 변수 생성 및 초기화
+        String inquiry = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
         // 연산 결과를 담아줄 배열 생성
@@ -143,7 +145,17 @@ public class Main {
 
             // 현재까지의 저장 결과를 보여주기 위한 출력
             // 배열은 results로 바로 출력하면 주소값이 뜨기 때문에 해당 주소의 값을 가져와주는 toString메소드 사용
-            System.out.println("현재까지의 결과 : " + results.toString());
+            // System.out.println("현재까지의 결과 : " + results.toString());
+
+            // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            // 조회 여부를 만들어둔 String 객체에 담아준다
+            inquiry = sc.next();
+            // 만약 사용자가 입력한 값이 "inquiry"와 같다면
+            if (inquiry.equals("inquiry")) {
+                // 현재까지 저장된 연산결과를 조회해준다
+                results.forEach(data -> System.out.println(data));
+            }
 
             // 더 계산할지에 대한 여부를 묻기 위한 출력
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
