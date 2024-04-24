@@ -8,15 +8,16 @@ public class Main {
         // 사용자에게 입력을 받기 위하여 Scanner 생성자를 통하여 Scanner 객체 생성
         Scanner sc = new Scanner(System.in);
         // 입력 받을 두 정수를 담을 int 타입의 변수 생성 및 초기화
-        int firstNumber, secondNumber = 0, radius = 0;
+        double firstNumber, secondNumber = 0, radius = 0;
         // 입력받을 사칙연산 기호를 담을 변수 생성 및 초기화
         char symbol = ' ';
         // 종료, 삭제, 조회, 원하는 연산을 입력을 받기 위한 변수 생성 및 초기화
         String close = null, remove = null, inquiry = null, want = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
-        // Calculator를 사용하기 위해 객체 생성
-        Calculator cal = new Calculator();
+        // 계산을 위한 각 클래스를 인스턴스화 해준다 Calculator를 상속받았기 때문에 삭제와 조회도 모두 가능하다
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
@@ -37,7 +38,7 @@ public class Main {
                     System.out.println("양의 정수가 아닙니다. 다시 입력해주세요.");
                     System.out.print("첫 번째 숫자를 입력하세요: ");
                     // 새로 입력받은 정수를 변수에 담아준다
-                    firstNumber = sc.nextInt();
+                    firstNumber = sc.nextDouble();
                     //만약 새로 입력한 정수도 양의 정수가 아니라면 다시 반복문을 돌게 된다
                 }
 
@@ -52,7 +53,7 @@ public class Main {
                     System.out.println("양의 정수가 아닙니다. 다시 입력해주세요.");
                     System.out.print("두 번째 숫자를 입력하세요: ");
                     // 새로 입력받은 정수를 변수에 담아준다
-                    secondNumber = sc.nextInt();
+                    secondNumber = sc.nextDouble();
                     //만약 새로 입력한 정수도 양의 정수가 아니라면 다시 반복문을 돌게 된다
                 }
 
@@ -68,7 +69,7 @@ public class Main {
                 System.out.println("입력받은 문자 : " + symbol);
 
                 // 생성된 Calculator 객체에 calculator 메소드에 접근하여 입력받은 값들을 매개변수로 전달하여 실헹
-                cal.calculate(firstNumber, secondNumber, symbol);
+                arithmeticCalculator.calculate(firstNumber, secondNumber, symbol);
 
                 // 삭제 여부를 확인하기 위한 문장 출력
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
@@ -77,7 +78,7 @@ public class Main {
                 // 만약 사용자가 입력한 값이 "remove"와 같다면
                 if (remove.equals("remove")) {
                     // Calculator의 removeResult 메소드를 실행하여 0번 인덱스 값 삭제
-                    cal.removeResult();
+                    arithmeticCalculator.removeResult();
                 }
 
                 // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력
@@ -87,7 +88,7 @@ public class Main {
                 // 만약 사용자가 입력한 값이 "inquiry"와 같다면
                 if (inquiry.equals("inquiry")) {
                     // 저장된 사칙연산의 결과들을 불러오는 메소드를 실행시키며 출력해준다
-                    System.out.println(cal.inquiryResults());
+                    System.out.println(arithmeticCalculator.inquiryResults());
                 }
 
                 // 더 계산할지에 대한 여부를 묻기 위한 출력
@@ -104,10 +105,10 @@ public class Main {
                     // 반지름을 입력받는 문장 출력
                     System.out.print("원의 반지름을 입력하세요 : ");
                     // 입력받은 반지름을 radius에 넣어준다
-                    radius = sc.nextInt();
+                    radius = sc.nextDouble();
 
                     // 입력받은 radius를 파라미터로 전달하여 위의 생성해놓은 인스턴스인 cal의 calculateCircleArea 메소드를 실행한다
-                    cal.calculateCircleArea(radius);
+                    circleCalculator.calculate(radius);
 
                     // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력
                     System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
@@ -116,7 +117,7 @@ public class Main {
                     // 만약 사용자가 입력한 값이 "inquiry"와 같다면
                     if (inquiry.equals("inquiry")) {
                         // 저장된 원의 넓이들을 불러오는 메소드를 실행시키며 출력해준다
-                        System.out.println(cal.inquiryCircle());
+                        System.out.println(circleCalculator.inquiryResults());
                     }
 
                     // 더 계산할지에 대한 여부를 묻기 위한 출력
