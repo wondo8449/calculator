@@ -8,11 +8,11 @@ public class Main {
         // 사용자에게 입력을 받기 위하여 Scanner 생성자를 통하여 Scanner 객체 생성
         Scanner sc = new Scanner(System.in);
         // 입력 받을 두 정수를 담을 int 타입의 변수 생성 및 초기화
-        int firstNumber, secondNumber = 0;
+        int firstNumber, secondNumber = 0, radius = 0;
         // 입력받을 사칙연산 기호를 담을 변수 생성 및 초기화
         char symbol = ' ';
-        // 종료, 삭제, 조회 입력을 받기 위한 변수 생성 및 초기화
-        String close = null, remove = null, inquiry = null;
+        // 종료, 삭제, 조회, 원하는 연산을 입력을 받기 위한 변수 생성 및 초기화
+        String close = null, remove = null, inquiry = null, want = null;
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
         // Calculator를 사용하기 위해 객체 생성
@@ -20,6 +20,12 @@ public class Main {
 
         // 무한 계산을 하기 위한 while문 실행
         while(check) {
+            // 어떤 연산을 실행할 것인지 묻는 문장 출력
+            System.out.print("'사칙연산'과 '원의넓이' 중 원하는 계산을 입력하세요 : ");
+            // 받은 값을 변수 want에 담아준다
+            want = sc.next();
+            // 만약 입력받은 want가 '사칙연산' 이라면
+            if (want.equals("사칙연산")) {
                 // 첫번째 숫자를 입력받기 위한 문장 출력
                 System.out.print("첫 번째 숫자를 입력하세요: ");
                 // 입력받은 문자를 int타입으로 받아 미리 생성해 둔 변수에 담아준다
@@ -80,8 +86,8 @@ public class Main {
                 inquiry = sc.next();
                 // 만약 사용자가 입력한 값이 "inquiry"와 같다면
                 if (inquiry.equals("inquiry")) {
-                    // 현재까지 저장된 연산결과를 조회해준다 getter를 생성해놨기 때문에 따로 메소드를 생성하지 않고 getter를 활용해준다
-                    System.out.println(cal.getResults());
+                    // 저장된 사칙연산의 결과들을 불러오는 메소드를 실행시키며 출력해준다
+                    System.out.println(cal.inquiryResults());
                 }
 
                 // 더 계산할지에 대한 여부를 묻기 위한 출력
@@ -93,7 +99,39 @@ public class Main {
                     // exit가 입력되었다면 check 값을 false로 변경해 더 이상 while문을 돌지 않도록 설정
                     check = false;
                 }
+              // 입력한 문자가 원의 넓이인 경우
+            } else if (want.equals("원의넓이")) {
+                    // 반지름을 입력받는 문장 출력
+                    System.out.print("원의 반지름을 입력하세요 : ");
+                    // 입력받은 반지름을 radius에 넣어준다
+                    radius = sc.nextInt();
 
+                    // 입력받은 radius를 파라미터로 전달하여 위의 생성해놓은 인스턴스인 cal의 calculateCircleArea 메소드를 실행한다
+                    cal.calculateCircleArea(radius);
+
+                    // 저장된 연산결과를 조회할지에 대해 묻는 문장 출력
+                    System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+                    // 조회 여부를 만들어둔 String 객체에 담아준다
+                    inquiry = sc.next();
+                    // 만약 사용자가 입력한 값이 "inquiry"와 같다면
+                    if (inquiry.equals("inquiry")) {
+                        // 저장된 원의 넓이들을 불러오는 메소드를 실행시키며 출력해준다
+                        System.out.println(cal.inquiryCircle());
+                    }
+
+                    // 더 계산할지에 대한 여부를 묻기 위한 출력
+                    System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+                    // 사용자가 입력한 값을 만들어둔 String 변수에 담아준다
+                    close = sc.next();
+                    // String 클래스의 비교방법인 .equals 메소드를 사용해 exit가 입력되었는지 확인
+                    if (close.equals("exit")) {
+                        // exit가 입력되었다면 check 값을 false로 변경해 더 이상 while문을 돌지 않도록 설정
+                        check = false;
+                    }
+              // 만약 입력한 문자가 '사칙연산' 이나 '원의넓이' 가 아닌 경우
+            } else {
+                 System.out.println("잘못 입력하셨습니다. 다시 입력해주세요");
+                }
         }
     }
 }

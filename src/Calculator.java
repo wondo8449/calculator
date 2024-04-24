@@ -5,10 +5,18 @@ public class Calculator {
 
     // 결과 값을 담아 리턴할 List 객체를 외부에서 접근할 수 없도록 private 생성
     private List<Integer> results;
+    // 결과 값을 담아 리턴할 List 객체를 외부에서 접근할 수 없도록 private 생성
+    private List<Double> areas;
+
+    // 원주율은 바꾸지 않는 수이기 때문에 static final로 선언해주어서
+    // 상수로써의 역할을 하게 해준다
+    static final double RATIO = 3.14;
 
     // 생성자를 통하여 results가 초기화되어 생성되도록 설정
     public Calculator() {
         results = new ArrayList<>();
+        areas = new ArrayList<>();
+
     }
 
     // results의 값을 가져올 수 있는 getter 생성
@@ -20,6 +28,15 @@ public class Calculator {
     public void setResults(List<Integer> results) {
         this.results = results;
     }
+
+    // areas의 값을 가져올 수 있는 getter 생성
+    public List<Double> getAreas() { return areas; }
+
+    // areas의 값을 넣을 수 있는 setter 생성
+    public void setAreas(List<Double> areas) {
+        this.areas = areas;
+    }
+
 
     // 메인 메소드에서 접근할 수 있도록 접근 제어자는 public으로 설정해주고 return 타입은 계산 결과를
     // List 객체에 담아 리턴해줄 것이기 때문에 List로 설정해준다. 매개변수로는 두 개의 양의 정수,
@@ -82,4 +99,28 @@ public class Calculator {
         // List 객체의 remove 메소드를 사용하여 0번 인덱스의 값 삭제
         results.remove(0);
     }
+
+    // 사칙연산 결과 값 조회 메서드
+    public List<Integer> inquiryResults() {
+        return getResults();
+    }
+
+    // 원의 넓이를 구하는 메서드, 매개변수로 입력된 원의 반지름을 받아와준다
+    public double calculateCircleArea(int radius) {
+        // 결과값을 담을 변수 생성
+        double result = 0.0;
+
+        // 상수인 RATIO를 가져와서 원의 반지름을 구해 result에 담아준다
+        result = radius * radius * RATIO;
+        // 나온 결과를 List에 추가해 준다
+        areas.add(result);
+        // 결과값을 리턴해준다
+        return result;
+    }
+
+    // 원의 결과 값 조회 메서드
+    public List<Double> inquiryCircle() {
+        return getAreas();
+    }
+
 }
