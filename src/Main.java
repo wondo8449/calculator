@@ -16,6 +16,7 @@ public class Main {
         // 종료 함수의 boolean 값을 담기 위한 변수 생성 및 초기화
         boolean check = true;
         // 계산을 위한 각 클래스를 인스턴스화 해준다 Calculator를 상속받았기 때문에 삭제와 조회도 모두 가능하다
+        // 각각 생성되었기 때문에 results가 따로 있어 저장, 삭제, 조회 기능은 연산별로 작동하게 된다
         ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
         CircleCalculator circleCalculator = new CircleCalculator();
 
@@ -57,16 +58,10 @@ public class Main {
                     //만약 새로 입력한 정수도 양의 정수가 아니라면 다시 반복문을 돌게 된다
                 }
 
-                // 숫자를 정상적으로 입력받는지 테스트하기 위한 출력 메소드
-                System.out.println("첫번째 숫자: " + firstNumber + " 두번째 숫자: " + secondNumber);
-
                 // 사칙연산 기호를 입력받기 위한 문장 출력
                 System.out.print("사칙연산 기호를 입력하세요: ");
                 // 입력받은 문자열(String)을 선언해놓은 변수인 char 타입으로 형변화 후 변수에 담아준다
                 symbol = sc.next().charAt(0);
-
-                // 기호를 정상적으로 입력받는지 테스트하기 위한 출력 메소드
-                System.out.println("입력받은 문자 : " + symbol);
 
                 // 생성된 Calculator 객체에 calculator 메소드에 접근하여 입력받은 값들을 매개변수로 전달하여 실헹
                 arithmeticCalculator.calculate(firstNumber, secondNumber, symbol);
