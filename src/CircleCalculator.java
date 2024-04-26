@@ -1,14 +1,31 @@
-public class CircleCalculator extends Calculator{
+// 공용으로 쓸 기능을 Calculator에 선언해놓았기 때문에 상속을 받아준다
+public class CircleCalculator extends Calculator {
 
-    // 원의 넓이를 구하는 메서드, 매개변수로 입력된 원의 반지름을 받아와준다
-    public double calculate(double radius) {
+    // 입력되어 저장될 값을 외부에서 변경할 수 없게 private로 선언하여 준다
+    private int radius;
+
+    // 원주율은 절대 변하지 않을 값이기 때문에 static final을 통해 상수로 선언해준다
+    private static final double RATIO = 3.14;
+
+    // radius getter
+    public int getRadius() {
+        return radius;
+    }
+
+    // radius setter, 받아온 radius를 CircleCalculator의 radius에 저장한다
+    public void setRadius(int radius) {
+        this.radius = radius;
+    }
+
+
+    // 원의 넓이 연산을 실행하는 메서드, 이미 setter에서 입력된 값들로 실핼하기 때문에 매개변수는 필요없다
+    public double calculate() {
         // 결과값을 담을 변수 생성
         double result = 0.0;
 
-        // 상수인 RATIO를 가져와서 원의 반지름을 구해 result에 담아준다
-        result = radius * radius * RATIO;
-        // 나온 결과를 List에 추가해 준다
-        setResults(result);
+        // 연산을 실행하고 result에 저장해준다
+        result = this.radius * this.radius * RATIO;
+
         // 결과값을 리턴해준다
         return result;
     }
